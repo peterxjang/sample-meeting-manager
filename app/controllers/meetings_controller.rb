@@ -15,6 +15,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
+    @tags = Tag.all
     @meeting = Meeting.new(
       name: params[:name],
       address: params[:address],
@@ -48,6 +49,7 @@ class MeetingsController < ApplicationController
   end
 
   def update
+    @tags = Tag.all
     @meeting = Meeting.find_by(id: params[:id])
     if @meeting.update(
       name: params[:name],
