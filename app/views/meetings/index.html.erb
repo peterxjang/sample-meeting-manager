@@ -1,19 +1,16 @@
 <div ng-app="app">
   <div ng-controller="meetingsCtrl" ng-init="setup()">
-    {{ message }}
     <a href="/meetings/new">Create a new meeting</a>
     <h1><a href="/meetings">All meetings</a></h1>
-    <% @meetings.each do |meeting| %>
-      <h3><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h3>
+    <div ng-repeat="meeting in meetings">
+      <h3><a href="/meetings/{{ meeting.id }}">{{ meeting.name }}</a></h3>
       <p>
         Tags:
-        <% meeting.tags.each do |tag| %>
-          <a href="/meetings?tag=<%= tag.name %>"><%= tag.name %></a>  
-        <% end %>
+        <a ng-repeat="tag in meeting.tags" href="/meetings?tag={{ tag.name }}">{{ tag.name }}</a>
       </p>
-      <p>Address: <%= meeting.address %></p>
-      <p>Start time: <%= meeting.start_time %></p>
-      <p>End time: <%= meeting.end_time %></p>
-    <% end %>
+      <p>Address: {{ meeting.address }}</p>
+      <p>Start time: {{ meeting.startTime }}</p>
+      <p>End time: {{ meeting.endTime }}</p>
+    </div>
   </div>
 </div>
