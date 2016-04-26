@@ -1,5 +1,5 @@
 <div ng-app="app">
-  <div ng-controller="meetingsCtrl">
+  <div ng-controller="meetingsCtrl" ng-init="setup()">
     {{ message }}
     <a href="/meetings/new">Create a new meeting</a>
     <h1><a href="/meetings">All meetings</a></h1>
