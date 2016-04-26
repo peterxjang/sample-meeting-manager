@@ -2,7 +2,9 @@
   <div ng-controller="meetingsCtrl" ng-init="setup()">
     <a href="/meetings/new">Create a new meeting</a>
     <h1><a href="/meetings">All meetings</a></h1>
-    <div ng-repeat="meeting in meetings">
+    <label>Search by name: </label>
+    <input ng-model="nameFilter">
+    <div ng-repeat="meeting in meetings | filter: {name: nameFilter}">
       <h3><a href="/meetings/{{ meeting.id }}">{{ meeting.name }}</a></h3>
       <p>
         Tags:
