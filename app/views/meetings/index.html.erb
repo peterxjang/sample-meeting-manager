@@ -6,7 +6,10 @@
     <input ng-model="nameFilter">
     <button ng-repeat="tag in tags" ng-click="filterByTag(tag)">{{ tag.name }}</button>
     <button ng-click="resetFilterByTag()">Reset</button>
-    <div ng-repeat="meeting in meetings | filter: {name: nameFilter}" ng-if="matchTag(meeting)">
+    <div>
+      <button ng-click="changeOrderAttribute('startTime')">Sort by start time</button>
+    </div>
+    <div ng-repeat="meeting in meetings | filter: {name: nameFilter} | orderBy:orderAttribute:orderDescending" ng-if="matchTag(meeting)">
       <h3><a href="/meetings/{{ meeting.id }}">{{ meeting.name }}</a></h3>
       <p>
         Tags:
