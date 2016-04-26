@@ -43,5 +43,20 @@
       }
       $scope.orderAttribute = inputAttribute;
     };
+
+    $scope.createMeeting = function(name, address, startTime, endTime, notes, tags) {
+      var params = {
+        name: name,
+        address: address,
+        start_time: startTime,
+        end_time: endTime,
+        notes: notes,
+        tags: tags
+      };
+      $http.post('/api/v1/meetings.json', params).then(function(response) {
+        console.log(response);
+        $scope.meetings.push(response.data);
+      });
+    };
   });
 })();

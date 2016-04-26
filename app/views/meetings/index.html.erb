@@ -1,6 +1,38 @@
 <div ng-app="app">
   <div ng-controller="meetingsCtrl" ng-init="setup()">
-    <a href="/meetings/new">Create a new meeting</a>
+    <!-- <a href="/meetings/new">Create a new meeting</a> -->
+    <h3>Create a new meeting:</h3>
+    <form>
+      <div>
+        <label>Name:</label>
+        <input ng-model="newMeetingName">
+      </div>
+      <div>
+        <label>Address:</label>
+        <input ng-model="newMeetingAddress">
+      </div>
+      <div>
+        <label>Start time:</label>
+        <input ng-model="newMeetingStartTime" type="datetime-local">
+      </div>
+      <div>
+        <label>End time:</label>
+        <input ng-model="newMeetingEndTime" type="datetime-local">
+      </div>
+      <div>
+        <label>Notes</label>
+        <textarea ng-model="newMeetingNotes" cols="30" rows="10"></textarea>
+      </div>
+      <div>
+        <label>Tags</label>
+        <select ng-model="newMeetingTags" multiple="multiple">
+          <option ng-repeat="tag in tags" value="{{ tag.id }}">{{ tag.name }}</option>
+        </select>
+      </div>
+      <div>
+        <input ng-click="createMeeting(newMeetingName, newMeetingAddress, newMeetingStartTime, newMeetingEndTime, newMeetingNotes, newMeetingTags)" type="submit">
+      </div>
+    </form>
     <h1><a href="/meetings">All meetings</a></h1>
     <label>Search by name: </label>
     <input ng-model="nameFilter" list="names">
