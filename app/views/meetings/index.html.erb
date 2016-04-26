@@ -4,7 +4,9 @@
     <h1><a href="/meetings">All meetings</a></h1>
     <label>Search by name: </label>
     <input ng-model="nameFilter">
-    <div ng-repeat="meeting in meetings | filter: {name: nameFilter}">
+    <button ng-repeat="tag in tags" ng-click="filterByTag(tag)">{{ tag.name }}</button>
+    <button ng-click="resetFilterByTag()">Reset</button>
+    <div ng-repeat="meeting in meetings | filter: {name: nameFilter}" ng-if="matchTag(meeting)">
       <h3><a href="/meetings/{{ meeting.id }}">{{ meeting.name }}</a></h3>
       <p>
         Tags:
