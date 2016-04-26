@@ -1,4 +1,5 @@
 <h3><%= @meeting.name %></h3>
+<a href="/meetings/<%= @meeting.id %>/edit">Edit this meeting</a>
 <p>
   Tags:
   <% @meeting.tags.each do |tag| %>
