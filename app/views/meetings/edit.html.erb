@@ -13,31 +13,5 @@
 <% end %>
 
 <%= form_tag "/meetings/#{@meeting.id}", method: :patch do %>
-  <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, @meeting.name %>
-  </div>
-  <div>
-    <%= label_tag :address %>
-    <%= text_field_tag :address, @meeting.address %>
-  </div>
-  <div>
-    <%= label_tag :start_time %>
-    <%= datetime_local_field_tag :start_time, @meeting.start_time %>
-  </div>
-  <div>
-    <%= label_tag :end_time %>
-    <%= datetime_local_field_tag :end_time, @meeting.end_time %>
-  </div>
-  <div>
-    <%= label_tag :notes %>
-    <%= text_area_tag :notes, @meeting.notes %>
-  </div>
-  <div>
-    <%= label_tag :tags %>
-    <%= select_tag :tags, options_from_collection_for_select(@tags, :id, :name), multiple: true %>
-  </div>
-  <div>
-    <%= submit_tag %>
-  </div>
+  <%= render partial: "form" %>
 <% end %>
