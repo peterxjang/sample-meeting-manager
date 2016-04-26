@@ -34,6 +34,10 @@
     <%= text_area_tag :notes, @meeting.notes %>
   </div>
   <div>
+    <%= label_tag :tags %>
+    <%= select_tag :tags, options_from_collection_for_select(@tags, :id, :name), multiple: true %>
+  </div>
+  <div>
     <%= submit_tag %>
   </div>
 <% end %>
