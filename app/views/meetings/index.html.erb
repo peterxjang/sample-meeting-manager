@@ -3,7 +3,10 @@
     <a href="/meetings/new">Create a new meeting</a>
     <h1><a href="/meetings">All meetings</a></h1>
     <label>Search by name: </label>
-    <input ng-model="nameFilter">
+    <input ng-model="nameFilter" list="names">
+    <datalist id="names">
+      <option ng-repeat="meeting in meetings">{{ meeting.name }}</option>
+    </datalist>
     <button ng-repeat="tag in tags" ng-click="filterByTag(tag)">{{ tag.name }}</button>
     <button ng-click="resetFilterByTag()">Reset</button>
     <div>
