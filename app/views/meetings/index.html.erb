@@ -1,3 +1,4 @@
+
 <div ng-app="app">
   <div ng-controller="meetingsCtrl" ng-init="setup()">
     <!-- <a href="/meetings/new">Create a new meeting</a> -->
@@ -54,5 +55,7 @@
       <p>Start time: {{ meeting.startTime }}</p>
       <p>End time: {{ meeting.endTime }}</p>
     </div>
+    <div id="map"></div>
   </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js" async defer></script>
