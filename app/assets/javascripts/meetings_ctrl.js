@@ -66,6 +66,8 @@
         center: {lat: -34.397, lng: 150.644},
         zoom: 8
       });
+      var markers = [];
+      var bounds = new google.maps.LatLngBounds();
       meetings.forEach(function(meeting) {
         console.log(meeting);
         geocoder.geocode({address: meeting.address}, function(results, status) {
@@ -76,6 +78,11 @@
               map: map,
               title: 'Hello World!'
             });
+            markers.push(marker);
+            for (var i = 0;i < markers.length; i++) {
+              bounds.extend(markers[i].getPosition());
+            }
+            map.fitBounds(bounds);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
